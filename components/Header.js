@@ -1,19 +1,24 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Header() {
+export default function Header(){
   return (
-    <header className="bg-gray-100 shadow-md">
-      <div className="container mx-auto flex items-center justify-between p-4">
-        <div className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="Leo Club Logo" width={40} height={40} />
-          <span className="font-bold text-xl">Leo Club of Dhaka Luminary</span>
-        </div>
-        <nav className="space-x-4">
-          <Link href="/">Home</Link>
-          <Link href="/#projects">Projects</Link>
-          <Link href="/#events">Events</Link>
-          <Link href="/#team">Team</Link>
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <div className="container py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.png" alt="Leo Club" width={42} height={42} className="rounded-full border" />
+          <div className="leading-tight">
+            <div className="font-black tracking-wide">LEO CLUB</div>
+            <div className="text-xs text-gray-500 -mt-1">Dhaka Luminary</div>
+          </div>
+        </Link>
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" className="hover:text-black">About</a>
+          <a href="#projects" className="hover:text-black">Projects</a>
+          <a href="#events" className="hover:text-black">Events</a>
+          <a href="#team" className="hover:text-black">Team</a>
+          <a href="#gallery" className="hover:text-black">Gallery</a>
+          <a href="#join" className="btn btn-primary">Become a Member</a>
         </nav>
       </div>
     </header>
