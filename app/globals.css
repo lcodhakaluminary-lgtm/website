@@ -33,3 +33,7 @@ html, body { width: 100%; overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .card, .btn { transition: none !important; }
 }
+.btn-primary{ @apply bg-brand-deep text-white border border-brand-deep hover:opacity-90 hover:-translate-y-0.5; }
+.btn-outline{ @apply border border-brand-deep text-brand-deep hover:bg-brand-deep/5 hover:-translate-y-0.5; }
+.card{ @apply bg-white border border-gray-200 rounded-2xl shadow-[0_10px_30px_rgba(17,24,39,.08)] p-6 transition-transform duration-300; }
+a.link{ @apply text-brand-deep; }
