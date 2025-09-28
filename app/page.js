@@ -144,5 +144,20 @@ export default function Home(){
         </div>
       </section>
     </div>
+import Carousel from "../components/Carousel";
+
+<section className="py-12 md:py-20">
+  <div className="container">
+    <h2 className="text-3xl md:text-4xl font-extrabold mb-4">What Members Say</h2>
+    <Carousel
+      items={[
+        { text: "“I found my leadership voice here.” — Aisha, President" },
+        { text: "“Best service family in Dhaka.” — Farhan, Secretary" },
+        { text: "“Every event teaches me something.” — Taslima, Treasurer" }
+      ]}
+    />
+  </div>
+</section>
+
   );
 }
