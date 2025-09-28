@@ -136,6 +136,9 @@ export default function Home(){
               <div className="card">Open to students and young professionals (ages 18–30). No prior experience required.</div>
               <div className="card">Meetings twice a month; service projects on weekends.</div>
               <div className="card">District 315 B1, Dhaka, Bangladesh</div>
+        {/* Floating contact */}
+<FabContact />
+
             </div>
           </div>
         </div>
