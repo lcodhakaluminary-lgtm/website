@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Minimal global styles (keep it simple) */
 body {
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111827; /* slate-900 */
+  background: #ffffff;
 }
