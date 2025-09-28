@@ -1,5 +1,6 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
 export default function ParallaxHero() {
   const { scrollY } = useScroll();
@@ -30,8 +31,16 @@ export default function ParallaxHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="mx-auto w-24 h-24 rounded-full grid place-content-center border bg-white shadow">
-            <span className="font-extrabold text-xl">LEO</span>
+          {/* Your logo here */}
+          <div className="mx-auto w-24 h-24 rounded-full border bg-white grid place-content-center overflow-hidden shadow">
+            <Image
+              src="/logo.png"
+              alt="Leo Club of Dhaka Luminary"
+              width={120}
+              height={120}
+              className="w-full h-full object-contain p-2"
+              priority
+            />
           </div>
           <h3 className="mt-3 font-bold">Leadership • Experience • Opportunity</h3>
           <p className="text-gray-500">Developing leaders through service and fellowship.</p>
