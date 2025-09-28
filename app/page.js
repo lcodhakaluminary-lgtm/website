@@ -2,13 +2,15 @@
 
 import { motion } from "framer-motion";
 import projects from "../data/projects.json";
+import team from "../data/team.json";
 import AnnouncementBar from "../components/AnnouncementBar";
 import CounterStat from "../components/CounterStat";
 import SearchableEvents from "../components/SearchableEvents";
 import GalleryLightbox from "../components/GalleryLightbox";
-import team from "../data/team.json";
 
 const fadeUp = { initial:{opacity:0, y:24}, whileInView:{opacity:1, y:0}, viewport:{once:true, amount:0.2}, transition:{duration:.5} };
+const stagger = { hidden:{opacity:0}, show:{opacity:1, transition:{staggerChildren:.08}} };
+const item = { hidden:{opacity:0, y:18, scale:.98}, show:{opacity:1, y:0, scale:1, transition:{duration:.35}} };
 
 export default function Home(){
   return (
@@ -17,7 +19,7 @@ export default function Home(){
 
       {/* HERO */}
       <section className="relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-yellow-50 via-white to-white" />
+        <div className="absolute inset-0 -z-10 hero-grad" />
         <div className="container py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <motion.div {...fadeUp}>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight">Leo Club of Dhaka Luminary</h1>
@@ -38,14 +40,12 @@ export default function Home(){
         </div>
       </section>
 
-      {/* ABOUT with animated counters */}
-      <section id="about" className="py-12 md:py-20">
+      {/* ABOUT + counters */}
+      <section id="about" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">About the Club</h2>
-            <p className="text-gray-500 mt-1 max-w-2xl">
-              Based in District 315 B1, Dhaka. We grow leadership by serving our community.
-            </p>
+            <p className="text-gray-500 mt-1 max-w-2xl">Based in District 315 B1, Dhaka. We grow leadership by serving our community.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             <CounterStat value={75} label="Active Members" />
@@ -55,26 +55,26 @@ export default function Home(){
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section id="projects" className="py-12 md:py-20">
+      {/* PROJECTS – staggered cards with hover lift */}
+      <section id="projects" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Signature Projects</h2>
             <p className="text-gray-500">A snapshot of our year-round service.</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{once:true, amount:.2}} className="grid md:grid-cols-3 gap-6">
             {projects.map(p=>(
-              <motion.div key={p.title} {...fadeUp} className="card">
+              <motion.div key={p.title} variants={item} whileHover={{y:-6, boxShadow:"0 16px 40px rgba(17,24,39,.12)"}} className="card">
                 <h3 className="font-bold text-xl">{p.title}</h3>
                 <p className="text-gray-500 mt-1">{p.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* EVENTS with search */}
-      <section id="events" className="py-12 md:py-20">
+      {/* EVENTS – searchable list already animated by cards */}
+      <section id="events" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Upcoming Events</h2>
@@ -84,27 +84,27 @@ export default function Home(){
         </div>
       </section>
 
-      {/* TEAM */}
-      <section id="team" className="py-12 md:py-20">
+      {/* TEAM – staggered cards */}
+      <section id="team" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Executive Committee</h2>
             <p className="text-gray-500">2025–26 tenure</p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{once:true, amount:.2}} className="grid md:grid-cols-3 gap-6">
             {team.map(m=>(
-              <motion.div key={m.name} {...fadeUp} className="card text-center">
+              <motion.div key={m.name} variants={item} className="card text-center">
                 <div className="mx-auto w-16 h-16 rounded-2xl grid place-content-center bg-gray-100 border font-bold">{m.name.charAt(0)}</div>
                 <div className="mt-3 font-semibold">{m.name}</div>
                 <div className="text-gray-500 text-sm">{m.role}</div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* GALLERY with lightbox */}
-      <section id="gallery" className="py-12 md:py-20">
+      {/* GALLERY – lightbox component handles transitions */}
+      <section id="gallery" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Gallery</h2>
@@ -114,31 +114,25 @@ export default function Home(){
         </div>
       </section>
 
-      {/* JOIN */}
-      <section id="join" className="py-12 md:py-20">
+      {/* JOIN – buttons already animated */}
+      <section id="join" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">Join the Movement</h2>
             <p className="text-gray-500">Fill the form and our membership team will reach out.</p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
-            <form
-              className="card space-y-3"
-              action="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/formResponse"
-              method="POST"
-              onSubmit={(e)=>{ if(!e.target.action.includes("REPLACE")) return; e.preventDefault(); alert('Demo form only — add your Google Form action URL.');}}
-            >
+            <form className="card space-y-3" onSubmit={(e)=>{e.preventDefault(); alert('Thanks! Demo form.')}}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input name="entry.1111" className="border rounded-xl px-3 py-2" placeholder="Full name" required />
-                <input name="entry.2222" type="email" className="border rounded-xl px-3 py-2" placeholder="Email address" required />
+                <input className="border rounded-xl px-3 py-2" placeholder="Full name" required />
+                <input type="email" className="border rounded-xl px-3 py-2" placeholder="Email address" required />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input name="entry.3333" className="border rounded-xl px-3 py-2" placeholder="Phone number" required />
-                <input name="entry.4444" className="border rounded-xl px-3 py-2" placeholder="Institution (e.g., MIST)" />
+                <input className="border rounded-xl px-3 py-2" placeholder="Phone number" required />
+                <input className="border rounded-xl px-3 py-2" placeholder="Institution (e.g., MIST)" />
               </div>
-              <textarea name="entry.5555" rows={5} className="border rounded-xl w-full p-3" placeholder="Why do you want to join?" />
+              <textarea rows={5} className="border rounded-xl w-full p-3" placeholder="Why do you want to join?" />
               <button className="btn btn-primary w-full">Submit Interest</button>
-              <p className="text-gray-500 text-xs">Replace the form <em>action</em> with your Google Form POST URL and map the `entry.xxxx` field IDs.</p>
             </form>
             <div className="space-y-4">
               <div className="card">Open to students and young professionals (ages 18–30). No prior experience required.</div>
