@@ -1,7 +1,12 @@
+"use client";
+
 import { motion } from "framer-motion";
 import projects from "../data/projects.json";
 import events from "../data/events.json";
 import team from "../data/team.json";
+
+// ...rest of the file stays the same
+
 
 const fadeUp = { initial:{opacity:0, y:24}, whileInView:{opacity:1, y:0}, viewport:{once:true, amount:0.2}, transition:{duration:.5} };
 
