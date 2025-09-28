@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ProBackground from "../components/ProBackground";
 
 export const metadata = {
   title: "Leo Club of Dhaka Luminary",
@@ -27,25 +28,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* SEO JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify({
-            "@context":"https://schema.org",
-            "@type":"NGO",
-            "name":"Leo Club of Dhaka Luminary",
-            "url":"https://your-vercel-domain.vercel.app",
-            "email":"mailto:lco.dhakaluminary@gmail.com",
-            "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},
-            "sameAs":[
-              "https://www.facebook.com/share/16xqDiQFRb/",
-              "https://www.instagram.com/lco.dhakaluminary"
-            ]
-          })}}
-        />
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-1 rounded">Skip to content</a>
+        {/* Subtle, professional background */}
+        <ProBackground />
+
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-1 rounded">
+          Skip to content
+        </a>
         <Header />
-        <main id="main" className="">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>
