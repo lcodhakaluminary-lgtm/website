@@ -1,21 +1,22 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import projects from "../data/projects.json";
 import team from "../data/team.json";
-import AnnouncementBar from "../components/AnnouncementBar";
-import CounterStat from "../components/CounterStat";
-import SearchableEvents from "../components/SearchableEvents";
-import GalleryLightbox from "../components/GalleryLightbox";
-import ParallaxHero from "../components/ParallaxHero";
-import ScrollProgress from "../components/ScrollProgress";
-import MagneticButton from "../components/MagneticButton";
-import TiltCard from "../components/TiltCard";
-import FloatingBlobs from "../components/FloatingBlobs";
 
-const fadeUp = { initial:{opacity:0, y:24}, whileInView:{opacity:1, y:0}, viewport:{once:true, amount:0.2}, transition:{duration:.5} };
-const stagger = { hidden:{opacity:0}, show:{opacity:1, transition:{staggerChildren:.08}} };
-const item = { hidden:{opacity:0, y:18, scale:.98}, show:{opacity:1, y:0, scale:1, transition:{duration:.35}} };
+// ⬇ turn these into client-only
+const AnnouncementBar = dynamic(()=>import("../components/AnnouncementBar"), { ssr:false });
+const SearchableEvents = dynamic(()=>import("../components/SearchableEvents"), { ssr:false });
+const GalleryLightbox = dynamic(()=>import("../components/GalleryLightbox"), { ssr:false });
+const ParallaxHero = dynamic(()=>import("../components/ParallaxHero"), { ssr:false });
+const ScrollProgress = dynamic(()=>import("../components/ScrollProgress"), { ssr:false });
+const MagneticButton = dynamic(()=>import("../components/MagneticButton"), { ssr:false });
+const TiltCard = dynamic(()=>import("../components/TiltCard"), { ssr:false });
+
+// keep simple ones inline:
+import CounterStat from "../components/CounterStat";
+
 
 export default function Home(){
   return (
