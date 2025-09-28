@@ -7,6 +7,11 @@ import AnnouncementBar from "../components/AnnouncementBar";
 import CounterStat from "../components/CounterStat";
 import SearchableEvents from "../components/SearchableEvents";
 import GalleryLightbox from "../components/GalleryLightbox";
+import ParallaxHero from "../components/ParallaxHero";
+import ScrollProgress from "../components/ScrollProgress";
+import MagneticButton from "../components/MagneticButton";
+import TiltCard from "../components/TiltCard";
+import FloatingBlobs from "../components/FloatingBlobs";
 
 const fadeUp = { initial:{opacity:0, y:24}, whileInView:{opacity:1, y:0}, viewport:{once:true, amount:0.2}, transition:{duration:.5} };
 const stagger = { hidden:{opacity:0}, show:{opacity:1, transition:{staggerChildren:.08}} };
@@ -14,48 +19,36 @@ const item = { hidden:{opacity:0, y:18, scale:.98}, show:{opacity:1, y:0, scale:
 
 export default function Home(){
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <ScrollProgress />
+      <FloatingBlobs />
       <AnnouncementBar />
 
-      {/* HERO */}
-      <section className="relative">
-        <div className="absolute inset-0 -z-10 hero-grad" />
-        <div className="container py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div {...fadeUp}>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight">Leo Club of Dhaka Luminary</h1>
-            <p className="mt-3 text-lg text-gray-600">Living the Luminary Spirit</p>
-            <div className="mt-6 flex gap-3">
-              <a href="#join" className="btn btn-primary">Join the Club</a>
-              <a href="#projects" className="btn btn-outline">Our Projects</a>
-            </div>
-            <p className="mt-4 text-sm text-gray-500">Affiliated with Lions Clubs International</p>
-          </motion.div>
-          <motion.div {...fadeUp} className="card text-center">
-            <div className="mx-auto w-20 h-20 rounded-full grid place-content-center border">
-              <span className="font-extrabold">LEO</span>
-            </div>
-            <h3 className="mt-3 font-bold">Leadership • Experience • Opportunity</h3>
-            <p className="text-gray-500">Developing leaders through service and fellowship.</p>
-          </motion.div>
-        </div>
-      </section>
+      {/* HERO (parallax) */}
+      <ParallaxHero />
 
-      {/* ABOUT + counters */}
+      {/* ABOUT + counters with CTA magnets */}
       <section id="about" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold">About the Club</h2>
-            <p className="text-gray-500 mt-1 max-w-2xl">Based in District 315 B1, Dhaka. We grow leadership by serving our community.</p>
+            <p className="text-gray-500 mt-1 max-w-2xl">
+              Based in District 315 B1, Dhaka. We grow leadership by serving our community.
+            </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             <CounterStat value={75} label="Active Members" />
             <CounterStat value={1200} label="Volunteer Hours (YTD)" />
             <CounterStat value={18} label="Projects Completed" />
           </div>
+          <div className="mt-6 flex gap-3">
+            <MagneticButton href="#join">Become a Member</MagneticButton>
+            <MagneticButton href="#projects" className="btn btn-outline">Explore Projects</MagneticButton>
+          </div>
         </div>
       </section>
 
-      {/* PROJECTS – staggered cards with hover lift */}
+      {/* PROJECTS – 3D Tilt Cards + stagger */}
       <section id="projects" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
@@ -64,16 +57,18 @@ export default function Home(){
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{once:true, amount:.2}} className="grid md:grid-cols-3 gap-6">
             {projects.map(p=>(
-              <motion.div key={p.title} variants={item} whileHover={{y:-6, boxShadow:"0 16px 40px rgba(17,24,39,.12)"}} className="card">
-                <h3 className="font-bold text-xl">{p.title}</h3>
-                <p className="text-gray-500 mt-1">{p.description}</p>
+              <motion.div key={p.title} variants={item}>
+                <TiltCard>
+                  <h3 className="font-bold text-xl">{p.title}</h3>
+                  <p className="text-gray-500 mt-1">{p.description}</p>
+                </TiltCard>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* EVENTS – searchable list already animated by cards */}
+      {/* EVENTS – search stays, cards hover lift via CSS */}
       <section id="events" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
@@ -84,7 +79,7 @@ export default function Home(){
         </div>
       </section>
 
-      {/* TEAM – staggered cards */}
+      {/* TEAM – stagger + tilt */}
       <section id="team" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
@@ -93,17 +88,19 @@ export default function Home(){
           </motion.div>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{once:true, amount:.2}} className="grid md:grid-cols-3 gap-6">
             {team.map(m=>(
-              <motion.div key={m.name} variants={item} className="card text-center">
-                <div className="mx-auto w-16 h-16 rounded-2xl grid place-content-center bg-gray-100 border font-bold">{m.name.charAt(0)}</div>
-                <div className="mt-3 font-semibold">{m.name}</div>
-                <div className="text-gray-500 text-sm">{m.role}</div>
+              <motion.div key={m.name} variants={item}>
+                <TiltCard className="text-center">
+                  <div className="mx-auto w-16 h-16 rounded-2xl grid place-content-center bg-gray-100 border font-bold">{m.name.charAt(0)}</div>
+                  <div className="mt-3 font-semibold">{m.name}</div>
+                  <div className="text-gray-500 text-sm">{m.role}</div>
+                </TiltCard>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* GALLERY – lightbox component handles transitions */}
+      {/* GALLERY – lightbox already animated */}
       <section id="gallery" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
@@ -114,7 +111,7 @@ export default function Home(){
         </div>
       </section>
 
-      {/* JOIN – buttons already animated */}
+      {/* JOIN */}
       <section id="join" className="py-12 md:py-20 scroll-mt-24">
         <div className="container">
           <motion.div {...fadeUp} className="mb-8">
@@ -132,7 +129,7 @@ export default function Home(){
                 <input className="border rounded-xl px-3 py-2" placeholder="Institution (e.g., MIST)" />
               </div>
               <textarea rows={5} className="border rounded-xl w-full p-3" placeholder="Why do you want to join?" />
-              <button className="btn btn-primary w-full">Submit Interest</button>
+              <MagneticButton>Submit Interest</MagneticButton>
             </form>
             <div className="space-y-4">
               <div className="card">Open to students and young professionals (ages 18–30). No prior experience required.</div>
