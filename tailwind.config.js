@@ -1,20 +1,9 @@
-{
-  "name": "leo-club-dhaka-luminary",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.2.7",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "10.4.16",
-    "postcss": "8.4.31",
-    "tailwindcss": "3.3.3"
-  }
-}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: { extend: {} },
+  plugins: [],
+};
