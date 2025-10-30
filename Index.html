@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- PURPOSE: Basic meta + fonts + color system -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leo Club of Dhaka Luminary</title>
+
+  <!-- Color system (edit these 4 to re-theme quickly) -->
+  <style>
+    :root{
+      --bg: #F3EFE7;        /* warm paper/beige like your logo background */
+      --ink: #2F2F2F;       /* charcoal text */
+      --ink-2: #5A5A5A;     /* softer gray text */
+      --accent: #3A3A3A;    /* deep accent (monochrome to match logo) */
+      --ring: rgba(0,0,0,.08);
+      --radius: 16px;
+      --shadow: 0 6px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1080px;margin:0 auto;padding:0 16px}
+    .btn{
+      display:inline-block;padding:12px 18px;border-radius:999px;
+      background:linear-gradient(135deg, #4A4A4A, #202020);
+      color:#fff;border:1px solid #0003; box-shadow:var(--shadow);
+      transition:transform .12s ease, box-shadow .12s ease, opacity .2s;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 28px rgba(0,0,0,.15)}
+    .chip{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid var(--ring);background:#fff9}
+    .card{
+      background:#fff;border:1px solid var(--ring);border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    .muted{color:var(--ink-2)}
+    header.sticky{
+      position:sticky;top:0;z-index:50;background:rgba(243,239,231,.8);
+      backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--ring);
+    }
+    nav a{padding:10px 12px;border-radius:10px}
+    nav a:hover{background:#00000008}
+    .hero{
+      /* PURPOSE: Big welcome area with a subtle mono gradient that matches the logo vibe */
+      background:
+        radial-gradient(1200px 600px at 80% -20%, #00000008, transparent 60%),
+        linear-gradient(180deg, #FFFFFF, #EFECE4 70%, #EAE6DD);
+      border-bottom:1px solid var(--ring)
+    }
+    .hero h1{font-size:clamp(28px, 5vw, 56px);line-height:1.1;margin:0 0 12px}
+    .hero p{font-size:clamp(16px, 2.4vw, 20px)}
+    .grid{display:grid; gap:18px}
+    @media(min-width:768px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
+    .section{padding:56px 0}
+    .section h2{font-size:clamp(22px, 3.6vw, 32px);margin:0 0 8px}
+    .section p.lead{font-size:18px;color:var(--ink-2);margin:0 0 24px}
+    footer{padding:28px 0;border-top:1px solid var(--ring)}
+    /* Small utility for logo ring */
+    .logo-ring{border-radius:999px;border:1px solid var(--ring);padding:10px;background:#fff;box-shadow:var(--shadow)}
+  </style>
+</head>
+<body>
+
+  <!-- =========================
+       HEADER / NAV
+       PURPOSE: Site title, logo, quick nav. Replace logo src with your own file.
+       ========================= -->
+  <header class="sticky">
+    <div class="container" style="display:flex;align-items:center;gap:14px;padding:10px 0;">
+      <img src="logo.png" alt="Leo Club of Dhaka Luminary logo" width="48" height="48" class="logo-ring">
+      <div style="font-weight:700;letter-spacing:.3px">Leo Club of Dhaka Luminary</div>
+      <nav style="margin-left:auto;display:flex;gap:4px;flex-wrap:wrap">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#join">Join</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO
+       PURPOSE: First impression + primary actions
+       EDIT: Headline, subtext, and buttons
+       ========================= -->
+  <section class="hero">
+    <div class="container" style="display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center;padding:56px 0">
+      <div>
+        <span class="chip">We Rise by Lifting Others</span>
+        <h1>Service • Leadership • Fellowship</h1>
+        <p class="muted">Creating real impact through community projects, youth leadership, and purposeful action across Dhaka.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+          <a class="btn" href="#join">Become a Member</a>
+          <a class="btn" href="#programs" style="background:#fff;color:var(--ink);border:1px solid var(--ring)">Explore Programs</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <img src="logo.png" alt="Leo emblem" style="max-width:360px;width:100%;filter:grayscale(100%);opacity:.9">
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ABOUT
+       PURPOSE: Quick club intro + stats
+       EDIT: Replace text and stats
+       ========================= -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About the Club</h2>
+      <p class="lead">Leo Club of Dhaka Luminary empowers young people to serve their community, develop leadership, and build fellowship under the Lions Clubs International banner.</p>
+      <div class="grid grid-3">
+        <div class="card" style="padding:18px">
+          <div class="muted">Members</div>
+          <div style="font-size:28px;font-weight:700">100+</div>
+          <p class="muted">Active volunteers in Dhaka</p>
+        </div>
+        <div class="card" style="padding:18px">
+          <div class="muted">Projects Completed</div>
+          <div style="font-size:28px;font-weight:700">75+</div>
+          <p class="muted">Health, education, environment</p>
+        </div>
+        <div class="card" style="padding:18px">
+          <div class="muted">Impact Hours</div>
+          <div style="font-size:28px;font-weight:700">10,000+</div>
+          <p class="muted">Combined volunteer time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       PROGRAMS
+       PURPOSE: Highlight 3–6 core programs
+       EDIT: Change titles, blurbs, and links
+       ========================= -->
+  <section id="programs" class="section">
+    <div class="container">
+      <h2>Our Programs</h2>
+      <p class="lead">We run recurring programs through the year. Join a team that fits your passion.</p>
+      <div class="grid grid-3">
+        <article class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">Healthcare Camps</h3>
+          <p class="muted">Eye screening, blood grouping, first-aid training with partner hospitals.</p>
+          <a class="btn" href="#">Learn more</a>
+        </article>
+        <article class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">Education Drives</h3>
+          <p class="muted">Stationery distribution, literacy sessions, mentorship for SSC/HSC students.</p>
+          <a class="btn" href="#">Learn more</a>
+        </article>
+        <article class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">Environment & Cleanup</h3>
+          <p class="muted">Tree plantation, riverbank cleanups, plastic-free campaigns.</p>
+          <a class="btn" href="#">Learn more</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       EVENTS
+       PURPOSE: Simple upcoming events list (static)
+       EDIT: Replace items; link to FB/Google Form
+       ========================= -->
+  <section id="events" class="section">
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <div class="grid grid-2">
+        <div class="card" style="padding:18px">
+          <h3 style="margin:0">Blood Donation Camp</h3>
+          <p class="muted">Dec 12, 2025 — Uttara</p>
+          <p>In collaboration with partners; walk-ins welcome. Volunteers needed for registration and refreshments.</p>
+          <a class="btn" href="#">Register</a>
+        </div>
+        <div class="card" style="padding:18px">
+          <h3 style="margin:0">Youth Leadership Workshop</h3>
+          <p class="muted">Jan 05, 2026 — MIST</p>
+          <p>Hands-on leadership modules, communications, and event management. Certificates for all participants.</p>
+          <a class="btn" href="#">Apply</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       GALLERY (static)
+       PURPOSE: Quick visual grid
+       EDIT: Replace image src URLs
+       ========================= -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2>Gallery</h2>
+      <p class="lead">Moments from our service projects and fellowships.</p>
+      <div class="grid grid-3">
+        <img class="card" src="https://picsum.photos/seed/leo1/600/400" alt="Project photo 1">
+        <img class="card" src="https://picsum.photos/seed/leo2/600/400" alt="Project photo 2">
+        <img class="card" src="https://picsum.photos/seed/leo3/600/400" alt="Project photo 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       JOIN CTA
+       PURPOSE: Membership call-to-action
+       EDIT: Swap the Google Form link
+       ========================= -->
+  <section id="join" class="section">
+    <div class="container card" style="padding:28px;display:grid;gap:12px;align-items:center;grid-template-columns:1.2fr .8fr">
+      <div>
+        <h2>Join Leo Club of Dhaka Luminary</h2>
+        <p class="lead">Ready to lead and serve? Fill the membership form — we’ll contact you within 48 hours.</p>
+        <a class="btn" href="#">Open Membership Form</a>
+      </div>
+      <img src="logo.png" alt="Leo emblem" style="max-width:260px;margin-left:auto;filter:grayscale(100%)">
+    </div>
+  </section>
+
+  <!-- =========================
+       WORDPRESS / HOSTING INFO (GENERIC)
+       PURPOSE: Neutral, reusable links you can replace
+       EDIT: Replace the placeholders with your chosen provider
+       ========================= -->
+  <section class="section">
+    <div class="container">
+      <h2>Want to put this site online?</h2>
+      <p class="lead">Two common paths: keep this as a static HTML site, or install WordPress for a full CMS.</p>
+
+      <div class="grid grid-2">
+        <div class="card" style="padding:18px">
+          <h3>Option A — Static Hosting (for this HTML file)</h3>
+          <ol class="muted">
+            <li>Buy a domain from your preferred registrar.</li>
+            <li>Buy hosting (shared or cloud) from <a href="#" title="Your hosting provider">your hosting provider</a>.</li>
+            <li>Upload this <code>index.html</code> and your <code>logo.png</code> to the hosting file manager (or via FTP).</li>
+            <li>Point your domain’s DNS to your hosting (A record / nameservers).</li>
+          </ol>
+          <p class="muted"><strong>Generic help:</strong> <a href="#" title="General static hosting guide">General static hosting guide</a></p>
+        </div>
+
+        <div class="card" style="padding:18px">
+          <h3>Option B — WordPress (CMS)</h3>
+          <ol class="muted">
+            <li>Buy a domain and hosting that supports WordPress (1-click or manual install).</li>
+            <li>Use the host’s “Auto-Install WordPress” or follow a <a href="#" title="General WordPress install guide">general WordPress install guide</a>.</li>
+            <li>Pick a theme, add pages (About, Programs, Events, Gallery, Join, Contact).</li>
+            <li>Upload your club logo to “Site Identity” and set brand colors (monochrome to match your emblem).</li>
+          </ol>
+          <p class="muted"><strong>Generic help:</strong> <a href="#" title="General WordPress docs">General WordPress docs</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       CONTACT
+       PURPOSE: Simple contact info block
+       EDIT: Email, phone, social links
+       ========================= -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="card" style="padding:18px">
+        <p class="muted">Email: <a href="mailto:leodl.club@example.com">leodl.club@example.com</a></p>
+        <p class="muted">Facebook: <a href="#">fb.com/LeoDhakaLuminary</a> &nbsp;•&nbsp; Instagram: <a href="#">@leodhakaluminary</a></p>
+        <p class="muted">Address: Uttara, Dhaka</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       FOOTER
+       PURPOSE: Credits + quick links
+       EDIT: Socials, copyright
+       ========================= -->
+  <footer>
+    <div class="container" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="display:flex;gap:10px;align-items:center">
+        <img src="logo.png" alt="Leo emblem small" width="32" height="32" class="logo-ring">
+        <div class="muted">© <span id="y"></span> Leo Club of Dhaka Luminary</div>
+      </div>
+      <div class="muted" style="display:flex;gap:12px">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#events">Events</a>
+        <a href="#join">Join</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Small JS: year + mobile-friendly smooth scroll -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Smooth scroll for same-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
